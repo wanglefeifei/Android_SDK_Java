@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.admin.bnetsdk"
+    android:installLocation="auto">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <application
+        android:name="BnetSDK.BNetApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+        <service
+            android:name="Service.BnetService"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.BIND_VPN_SERVICE"
+            android:process=":mine.bnet" >
+            <meta-data android:name ="android.net.VpnService.SUPPORTS_ALWAYS_ON"
+                android:value="true"/>
+        </service>
+        <service
+            android:name="Service.LocalVPNService"
+            android:permission="android.permission.BIND_VPN_SERVICE"
+            android:process=":mine.bnet">
+            <meta-data android:name ="android.net.VpnService.SUPPORTS_ALWAYS_ON"
+                android:value="true"/>
+        </service>
+</application>
+
+</manifest>
